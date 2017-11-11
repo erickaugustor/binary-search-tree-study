@@ -54,7 +54,6 @@ int removerArv(no **raiz, int numero){
 		no *aux = NULL;
 		aux
 		(*raiz)->valor = aux->valor;
-		removerArv(&(*raiz)->dir, (*raiz)->chave);
-		
+		removerArv(&(*raiz)->dir, (*raiz)->chave);	
 	}
 }

@@ -29,9 +29,10 @@ typedef struct tno{
 //Prototipe
 int inserirArv(no **raiz, int numero);
 int pertenceArv(int N, no *raiz);
-preArv(no *raiz);
-emArv(no *raiz);
-posArv(no *raiz);
+void preArv(no *raiz);
+void emArv(no *raiz);
+void posArv(no *raiz);
+int soma(no *raiz);
 //int removerArv(no **raiz, int numero);
 
 //Main
@@ -51,6 +52,7 @@ void main(void){
 		printf("   [3] PRE ORDEM! \n");
 		printf("   [4] EM  ORDEM! \n");
 		printf("   [5] POS ORDEM! \n");
+		printf("   [6] Soma dos valores! \n")
 		printf("   [0] Sair \n\n\n");
 			
 		//Digitar o que será feito!
@@ -91,6 +93,15 @@ void main(void){
 				posArv(raiz);
 			break;
 			
+			case 7:
+				retorno = soma(raiz);
+				printf("\n[ ] A soma é: %d foi encontrado com sucesso!", retorno);
+			break;
+			
+			case 8:
+				retorno = pares(raiz);
+				printf("\n[ ] O número de pares é: %d!", retorno);
+			break;
 			}
 			
 			//Flag!
@@ -152,6 +163,7 @@ int pertenceArv(int N, no *raiz){
 
 preArv(no *raiz){
 	if(raiz){
+		//CHAVE, ESQ, DIR.
 		printf("%d ", raiz -> chave);
 		preArv(raiz -> esq);
 		preArv(raiz -> dir);
@@ -161,6 +173,7 @@ preArv(no *raiz){
 
 
 emArv(no *raiz){
+	//ESQ, CHAVE, DIR
 	emArv(raiz -> esq);
 	printf("%d ", raiz -> chave);
 	preArv(raiz -> dir);
@@ -168,11 +181,23 @@ emArv(no *raiz){
 
 
 posArv(no *raiz){
+	//ESQ, DIR, CHAVE
 	preArv(raiz -> esq);
 	preArv(raiz -> dir);
 	printf("%d ", raiz -> chave);
 }
 
+
+int soma(no *raiz){
+	//Fila está vazia?
+	if((*raiz) == NULL) return (0);
+	else return(1 + soma(raiz -> esq) + soma(raiz -> dir));
+}
+
+
+int pares(no *raiz){
+	if(raiz == NULL) return 0;
+}
 
 /*
 int removerArv(no **raiz, int numero){

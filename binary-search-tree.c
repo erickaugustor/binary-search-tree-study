@@ -33,6 +33,8 @@ void preArv(no *raiz);
 void emArv(no *raiz);
 void posArv(no *raiz);
 int soma(no *raiz);
+int pares(no *raiz);
+int altura(no *raiz);
 //int removerArv(no **raiz, int numero);
 
 //Main
@@ -52,7 +54,9 @@ void main(void){
 		printf("   [3] PRE ORDEM! \n");
 		printf("   [4] EM  ORDEM! \n");
 		printf("   [5] POS ORDEM! \n");
-		printf("   [6] Soma dos valores! \n")
+		printf("   [6] Soma dos valores! \n");
+		printf("   [7] Valores pares! \n");
+		printf("   [8] Altura da arvore! \n");
 		printf("   [0] Sair \n\n\n");
 			
 		//Digitar o que será feito!
@@ -81,26 +85,31 @@ void main(void){
 				else printf("Erro!");
 			break;
 			
-			case 4:
+			case 3:
 				preArv(raiz);
 			break;
 			
-			case 5:
+			case 4:
 				emArv(raiz);
 			break;
 		
-			case 6:
+			case 5:
 				posArv(raiz);
 			break;
 			
-			case 7:
+			case 6:
 				retorno = soma(raiz);
 				printf("\n[ ] A soma é: %d foi encontrado com sucesso!", retorno);
 			break;
 			
-			case 8:
+			case 7:
 				retorno = pares(raiz);
-				printf("\n[ ] O número de pares é: %d!", retorno);
+				printf("\n[ ] O número de pares eh: %d!", retorno);
+			break;
+			
+			case 8:
+				retorno = altura(raiz);
+				printf("\n[ ] A altura eh: %d!", retorno);
 			break;
 			}
 			
@@ -197,6 +206,16 @@ int soma(no *raiz){
 
 int pares(no *raiz){
 	if(raiz == NULL) return 0;
+	else return( (raiz->chave%2)? 1+pares(raiz->esq)+pares(raiz->dir) : pares(raiz->esq)+pares(raiz->dir) );
+}
+
+
+int altura(no *raiz){
+	if(raiz == NULL) return 0;
+	int E = altura(raiz->esq);
+	int D = altura(raiz->dir);
+	return(E>D ? 1 + E : 1 + D);
+	
 }
 
 /*

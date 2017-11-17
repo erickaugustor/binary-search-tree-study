@@ -215,7 +215,6 @@ int altura(no *raiz){
 	int E = altura(raiz->esq);
 	int D = altura(raiz->dir);
 	return(E>D ? 1 + E : 1 + D);
-	
 }
 
 /*

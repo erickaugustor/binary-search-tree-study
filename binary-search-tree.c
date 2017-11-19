@@ -124,7 +124,6 @@ void main(void){
 
 //Functions
 int inserirArv(no **raiz, int numero){
-	
 	//Está nulo?
 	if((*raiz) == NULL){
 		
@@ -167,7 +166,6 @@ int pertenceArv(int N, no *raiz){
 	//Ou provavelmente estará no lado direito.
 	return(pertenceArv(N, raiz -> dir));
 }
-
 
 
 preArv(no *raiz){
